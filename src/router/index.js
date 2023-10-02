@@ -16,8 +16,11 @@ module.exports = app =>{
     app.route('/workout/:id')
         .get(require('../controllers/hubController').workout.getWorkoutId)
       
-
-
     app.route('/recommendation')
         .post(require('../controllers/hubController').recommendation.postRecommendation)
+
+
+    app.route('/')
+        .get(require('../controllers/hubController').view.get)
+        
 }       

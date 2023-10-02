@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Idade</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach(function(user) { %>
+      <tr>
+        <th scope="row"><%= user.id %></th>
+        <td><%= user.name %></td>
+        <td><%= user.age %></td>
+      </tr>
+  <% }); %>
+   
+   
+  </tbody>
+</table>

@@ -10,8 +10,11 @@ module.exports = {
     user: {
         getusers: async (req, res) =>{
             try {
-                let result = await userRep.getUser()
-                res.status(200).send(result);
+                const users = await userRep.getUser()
+                console.log(JSON.stringify(users))
+                res.render('tableUsers',{
+                    users
+                })
             } catch (err) {
                 res.status(400).json({ ok: false, message: `${err}  - Falha ao consultar ` })
             }
@@ -61,6 +64,16 @@ module.exports = {
             } catch (err) {
                 res.status(400).json({ ok: false, message: `${err}  - Falha ao consultar ` })
             }
+        },
+        getTrainnings: async (req, res) =>{
+            try {
+                const {id} = req.query
+                res.status(200).send(await userWorkRep.getUserWorkouts(id));
+            } catch (err) {
+                res.status(400).json({ ok: false, message: `${err}  - Falha ao consultar ` })
+            }
+
+
         },
     },
     workout: {
@@ -140,5 +153,14 @@ module.exports = {
                 res.status(400).json({ ok: false, message: `${err}  - Falha ao consultar ` })
             }
         }
+    },
+    view:{
+        get: async (req, res) =>{
+            try {
+                res.render('index');
+            } catch (err) {
+                res.status(400).json({ ok: false, message: `${err}  - Falha ao consultar ` })
+            }
+        },
     }
 }

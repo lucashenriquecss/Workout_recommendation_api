@@ -28,6 +28,15 @@ class UserWorkoutRepository {
    
         return result
     }
+
+    async getUserWorkouts(id){
+        return await userWorkoutSequelize.getAttributes({where:{
+            userId:id
+        }});
+    }
+    async getWorkouts(){
+        
+    }
 }
 
 module.exports = UserWorkoutRepository;

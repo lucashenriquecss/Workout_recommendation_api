@@ -7,8 +7,12 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views/pages');
 
 const init = SyncDb();
+
 
 require('./router')(app);
 
