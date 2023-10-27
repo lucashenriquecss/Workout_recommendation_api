@@ -11,10 +11,12 @@ module.exports = {
         getusers: async (req, res) =>{
             try {
                 const users = await userRep.getUser()
-                console.log(JSON.stringify(users))
-                res.render('tableUsers',{
-                    users
-                })
+                res.status(200).json(users);
+                // console.log(JSON.stringify(users))
+                // res.render('tableUsers',{
+                //     users
+                // })
+                // res.status(200).json(result);
             } catch (err) {
                 res.status(400).json({ ok: false, message: `${err}  - Falha ao consultar ` })
             }

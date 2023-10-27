@@ -8,7 +8,16 @@ class UserRepository {
     }
 
     async getUser(){
-        return await userSequelize.findAll();
+        return await userSequelize.findAll({
+            include:[
+                {
+                  model:userWorkoutSequelize,
+                  attributes:['id','workout'],
+                  as: 'workouts'
+
+                }
+            ]
+        });
     }
     async getUserId(id){
         return await userSequelize.findAll({where:{id:id}});

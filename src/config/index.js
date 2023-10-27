@@ -6,6 +6,8 @@ const {userSequelize} = require('../models/User');
 const {workoutSequelize} = require('../models/Workout');
 const {userWorkoutSequelize} = require('../models/UserWorkout');
 
+
+userSequelize.hasMany(userWorkoutSequelize, {foreignKey:'userId', as:'workouts'});
 userWorkoutSequelize.belongsTo(userSequelize, {foreignKey:'userId'});
 
 async function SyncDb () {
